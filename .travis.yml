@@ -4,6 +4,8 @@ os: osx
 osx_image: xcode11.2
 before_install:
   - npm install -g yarn --cache-min 999999999
+  - npm i -g makeappicon --cache-min 999999999
+  - brew install jq >/dev/null --cache-min 999999999
 script: bash 1-configure-environment.sh
 on:
   branch: master

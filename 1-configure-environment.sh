@@ -22,8 +22,6 @@ fi
 
 SECONDS=0
 
-brew install jq >/dev/null
-
 # check libraries are installed that we need.
 
 # get build related env vars now.
