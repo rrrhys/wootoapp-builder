@@ -3,7 +3,7 @@ provider: script
 os: osx
 osx_image: xcode11.2
 before_install:
-  - bundle update
+  - gem update fastlane
   - npm install -g yarn --cache-min 999999999
   - npm i -g makeappicon --cache-min 999999999
   - brew install jq >/dev/null
