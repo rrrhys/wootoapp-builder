@@ -22,7 +22,7 @@ fi
 
 SECONDS=0
 
-brew install jq
+brew install jq >/dev/null
 
 # check libraries are installed that we need.
 
