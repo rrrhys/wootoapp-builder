@@ -5,7 +5,7 @@ cd ios
 pwd
 
 EMAIL="rrrhys@gmail.com"
-
+bundle install
 fastlane produce create --app_name "$APP_NAME" --username $EMAIL --app_identifier "$BUNDLE_IDENTIFIER"
 fastlane sigh --app_identifier "$BUNDLE_IDENTIFIER" --provisioning_name "$BUNDLE_IDENTIFIER profile" --force
 fastlane beta
