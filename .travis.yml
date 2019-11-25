@@ -1,5 +1,7 @@
 deploy:
   provider: script
+  os: osx
+  osx_image: xcode11.2
   script: bash 1-configure-environment.sh
   on:
     branch: master
