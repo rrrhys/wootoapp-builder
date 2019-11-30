@@ -9,8 +9,8 @@ bundle install
 
 fastlane match appstore -u $EMAIL --team-id $TEAM_ID --app_identifier $BUNDLE_IDENTIFIER --git_url https://rrrhys@github.com/rrrhys/wootoapp-match.git
 
-fastlane produce create --app_name "$APP_NAME" --username $EMAIL --app_identifier "$BUNDLE_IDENTIFIER"
-fastlane cert -u $EMAIL
-fastlane sigh --app_identifier "$BUNDLE_IDENTIFIER" --provisioning_name "$BUNDLE_IDENTIFIER profile" --force
+# fastlane produce create --app_name "$APP_NAME" --username $EMAIL --app_identifier "$BUNDLE_IDENTIFIER"
+# fastlane cert -u $EMAIL
+fastlane sigh --app_identifier "$BUNDLE_IDENTIFIER" --provisioning_name "$BUNDLE_IDENTIFIER profile"
 fastlane beta
 fastlane pilot add $APP_OWNER -a $BUNDLE_IDENTIFIER --username $EMAIL --groups "External Testers"
