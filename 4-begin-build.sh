@@ -7,7 +7,7 @@ pwd
 EMAIL="rrrhys@gmail.com"
 bundle install
 
-fastlane match -u $EMAIL --team-id $TEAM_ID --app_identifier $BUNDLE_IDENTIFIER
+fastlane match -u $EMAIL --team-id $TEAM_ID --app_identifier $BUNDLE_IDENTIFIER --git_url git@github.com:rrrhys/wootoapp-match.git --type appstore
 
 fastlane produce create --app_name "$APP_NAME" --username $EMAIL --app_identifier "$BUNDLE_IDENTIFIER"
 fastlane cert -u $EMAIL
