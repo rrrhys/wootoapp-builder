@@ -16,6 +16,8 @@ fastlane cert -u $EMAIL
 echo "************ RUNNING FASTLANE SIGH ************"
 fastlane sigh --app_identifier "$BUNDLE_IDENTIFIER" -u $EMAIL --provisioning_name "$BUNDLE_IDENTIFIER profile"
 
+echo "***** TRY UPDATE PROFILE****"
+fastlane run update_project_provisioning xcodeproj:"MobileTEST.xcodeproj" profile:"./AppStore_com.$BUNDLE_IDENTIFIER.mobileprovision"
 echo "************ RUNNING FASTLANE BETA ************"
 fastlane beta
 fastlane pilot add $APP_OWNER -a $BUNDLE_IDENTIFIER --username $EMAIL --groups "External Testers"
