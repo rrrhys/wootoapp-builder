@@ -8,8 +8,8 @@ EMAIL="signing@wootoapp.com"
 bundle install
 
 KEYCHAIN_NAME=travis
-KEYCHAIN_PASS=pass
-fastlane action create_keychain name:$KEYCHAIN_NAME password:$KEYCHAIN_PASS default_keychain:true unlock:true add_to_search_list:true
+KEYCHAIN_PASS=travis
+fastlane action create_keychain default_keychain:true unlock:true add_to_search_list:true
 
 fastlane match appstore -u $EMAIL --team-id $TEAM_ID --app_identifier $BUNDLE_IDENTIFIER --git_url https://rrrhys@github.com/rrrhys/wootoapp-match.git --keychain_name $KEYCHAIN_NAME --keychain_password $KEYCHAIN_PASS
 
