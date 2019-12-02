@@ -7,16 +7,16 @@ pwd
 EMAIL="signing@wootoapp.com"
 bundle install
 
-KEYCHAIN_NAME=travis
-KEYCHAIN_PASS=travis
+echo "************ CREATE KEYCHAIN ************"
 fastlane action create_keychain default_keychain:true unlock:true add_to_search_list:true
 
+echo "************ MATCH ************"
 fastlane match appstore -u $EMAIL --team-id $TEAM_ID --app_identifier $BUNDLE_IDENTIFIER --git_url https://rrrhys@github.com/rrrhys/wootoapp-match.git --keychain_name $KEYCHAIN_NAME --keychain_password $KEYCHAIN_PASS
 
 echo "************ RUNNING FASTLANE PRODUCE ************"
 fastlane produce create --app_name "$APP_NAME" --username $EMAIL --app_identifier "$BUNDLE_IDENTIFIER"
 echo "************ RUNNING FASTLANE CERT ************"
-fastlane cert -u $EMAIL
+fastlane cert -u $EMAIL --keychain_path $KEYCHAIN_PATH --keychain_password $KEYCHAIN_PASS
 echo "************ RUNNING FASTLANE SIGH ************"
 fastlane sigh --app_identifier "$BUNDLE_IDENTIFIER" -u $EMAIL --provisioning_name "$BUNDLE_IDENTIFIER profile"
 
