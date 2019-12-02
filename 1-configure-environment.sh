@@ -33,6 +33,10 @@ export BUNDLE_IDENTIFIER=$(echo $STORE_JSON | jq '.store.bundle_identifier' -r)
 export APP_OWNER=$(echo $STORE_JSON | jq '.store.email' -r)
 export APP_BUILD_FOLDER=$BUNDLE_IDENTIFIER
 
+export KEYCHAIN_PATH=build.keychain
+export KEYCHAIN_NAME=travis
+export KEYCHAIN_PASS=travis
+
 export LOADING_SCREEN_IMAGE=$(echo $STORE_JSON | jq '.store.branding.loadingScreen' -r)
 export APP_ICON_IMAGE=$(echo $STORE_JSON | jq '.store.branding.appIcon' -r)
 echo "Store Name | ${APP_NAME} "
