@@ -33,6 +33,7 @@ export POST_UPDATE_URL="${BASE_URL}/build_update"
 
 echo "Store Details URL | ${GET_STORE_DETAILS_URL} "
 echo "Post Update URL | ${POST_UPDATE_URL} "
+curl -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" $GET_STORE_DETAILS_URL
 export STORE_JSON=$(curl -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" $GET_STORE_DETAILS_URL)
 export APP_NAME=$(echo $STORE_JSON | jq '.store.name' -r)
 export BUNDLE_IDENTIFIER=$(echo $STORE_JSON | jq '.store.bundle_identifier' -r)
