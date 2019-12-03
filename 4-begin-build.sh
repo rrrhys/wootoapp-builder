@@ -7,8 +7,8 @@ pwd
 EMAIL="signing@wootoapp.com"
 bundle install
 
-echo "************ CREATE KEYCHAIN ************"
-fastlane run create_keychain default_keychain:true unlock:true add_to_search_list:true name:$KEYCHAIN_NAME password:$KEYCHAIN_PASS
+# echo "************ CREATE KEYCHAIN ************"
+# fastlane run create_keychain default_keychain:true unlock:true add_to_search_list:true name:$KEYCHAIN_NAME password:$KEYCHAIN_PASS
 
 echo "KEYCHAIN PATH $KEYCHAIN_PATH $KEYCHAIN_NAME $KEYCHAIN_PASS"
 echo "************ MATCH ************"
@@ -16,13 +16,13 @@ fastlane match appstore -u $EMAIL --verbose --team-id $TEAM_ID --app_identifier 
 
 echo "************ RUNNING FASTLANE PRODUCE ************"
 fastlane produce create --app_name "$APP_NAME" --username $EMAIL --app_identifier "$BUNDLE_IDENTIFIER"
-echo "************ RUNNING FASTLANE CERT ************"
-fastlane cert -u $EMAIL --keychain_path $KEYCHAIN_PATH --keychain_password $KEYCHAIN_PASS
+#echo "************ RUNNING FASTLANE CERT ************"
+#fastlane cert -u $EMAIL --keychain_path $KEYCHAIN_PATH --keychain_password $KEYCHAIN_PASS
 echo "************ RUNNING FASTLANE SIGH ************"
 fastlane sigh --app_identifier "$BUNDLE_IDENTIFIER" -u $EMAIL --provisioning_name "$BUNDLE_IDENTIFIER profile"
 
 echo "***** TRY UPDATE PROFILE****"
-fastlane run update_project_provisioning xcodeproj:"MobileTEST.xcodeproj" profile:"./AppStore_com.$BUNDLE_IDENTIFIER.mobileprovision"
+fastlane run update_project_provisioning xcodeproj:"MobileTEST.xcodeproj" profile:"./AppStore_$BUNDLE_IDENTIFIER.mobileprovision"
 echo "************ RUNNING FASTLANE BETA ************"
 fastlane beta
 fastlane pilot add $APP_OWNER -a $BUNDLE_IDENTIFIER --username $EMAIL --groups "External Testers"
