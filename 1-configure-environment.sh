@@ -27,7 +27,11 @@ SECONDS=0
 # get build related env vars now.
 
 # with the trust JWT, get the store object.
-export STORE_JSON=$(curl -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" "https://y974dhoem9.execute-api.us-east-1.amazonaws.com/$STAGE/web/configurator-proxy/store")
+export BASE_URL="https://y974dhoem9.execute-api.us-east-1.amazonaws.com/$STAGE/web/configurator-proxy"
+export GET_STORE_DETAILS_URL="$BASE_URL/store"
+export POST_UPDATE_URL="$BASE_URL/build_update"
+
+export STORE_JSON=$(curl -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" $GET_STORE_DETAILS_URL)
 export APP_NAME=$(echo $STORE_JSON | jq '.store.name' -r)
 export BUNDLE_IDENTIFIER=$(echo $STORE_JSON | jq '.store.bundle_identifier' -r)
 export APP_OWNER=$(echo $STORE_JSON | jq '.store.email' -r)
@@ -44,6 +48,7 @@ echo "Bundle ID | ${BUNDLE_IDENTIFIER}"
 echo "Loading image | ${LOADING_SCREEN_IMAGE}"
 echo "App Icon image | ${APP_ICON_IMAGE}"
 echo "App Owner | ${APP_OWNER}"
+curl -X POST_UPDATE_URL -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" -d "{\"status\": \"started\", \"build_id\": \"$BUILD_ID\"}"
 ./2-get-codebase.sh
 ./3-make-icons.sh
 ./4-begin-build.sh
