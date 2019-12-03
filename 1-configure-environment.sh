@@ -51,7 +51,11 @@ echo "Bundle ID | ${BUNDLE_IDENTIFIER}"
 echo "Loading image | ${LOADING_SCREEN_IMAGE}"
 echo "App Icon image | ${APP_ICON_IMAGE}"
 echo "App Owner | ${APP_OWNER}"
-curl -X $POST_UPDATE_URL -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" -d "{\"status\": \"started\", \"build_id\": \"$BUILD_ID\"}"
+curl -X POST -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" \
+    -d "{\"status\": \"started\", \"build_id\": \"$BUILD_ID\"}" ${POST_UPDATE_URL}
+exit
 ./2-get-codebase.sh
 ./3-make-icons.sh
 ./4-begin-build.sh
