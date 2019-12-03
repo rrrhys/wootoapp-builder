@@ -21,6 +21,8 @@ fastlane cert -u $EMAIL --keychain_path $KEYCHAIN_PATH --keychain_password $KEYC
 echo "************ RUNNING FASTLANE SIGH ************"
 fastlane sigh --app_identifier "$BUNDLE_IDENTIFIER" -u $EMAIL --provisioning_name "$BUNDLE_IDENTIFIER profile"
 
+echo "**** RANDO KEY THING ****"
+security set-key-partition-list -S apple-tool:,apple: -s -k $KEYCHAIN_PASS $KEYCHAIN_NAME
 echo "***** TRY UPDATE PROFILE****"
 fastlane run update_project_provisioning xcodeproj:"MobileTEST.xcodeproj" profile:"./AppStore_$BUNDLE_IDENTIFIER.mobileprovision"
 echo "****** TRY ADD TEAM*****"
