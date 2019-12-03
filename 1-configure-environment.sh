@@ -31,7 +31,7 @@ export STORE_JSON=$(curl -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" "htt
 export APP_NAME=$(echo $STORE_JSON | jq '.store.name' -r)
 export BUNDLE_IDENTIFIER=$(echo $STORE_JSON | jq '.store.bundle_identifier' -r)
 export APP_OWNER=$(echo $STORE_JSON | jq '.store.email' -r)
-export APP_BUILD_FOLDER=$BUNDLE_IDENTIFIER
+export APP_BUILD_FOLDER="$BUNDLE_IDENTIFIER"
 
 export KEYCHAIN_PATH=/Users/travis/Library/Keychains/travis-db
 export KEYCHAIN_NAME=travis
