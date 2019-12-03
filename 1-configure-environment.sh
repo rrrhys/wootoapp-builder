@@ -54,7 +54,7 @@ echo "App Owner | ${APP_OWNER}"
 curl -X POST -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" \
-    -d "{\"status\": \"started\", \"build_id\": \"$BUILD_ID\"}" ${POST_UPDATE_URL}
+    -d "{\"status\": \"1. started\", \"build_id\": \"$BUILD_ID\"}" ${POST_UPDATE_URL}
 ./2-get-codebase.sh
 ./3-make-icons.sh
 ./4-begin-build.sh

@@ -28,3 +28,8 @@ cp -f elsplasho-2.jpg ../ios/MobileTEST/Images.xcassets/elsplasho.imageset/elspl
 cd ..
 
 rm -rf loadingtest
+
+curl -X POST -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" \
+    -d "{\"status\": \"4. created icons\", \"build_id\": \"$BUILD_ID\"}" ${POST_UPDATE_URL}

@@ -7,6 +7,11 @@ pwd
 EMAIL="signing@wootoapp.com"
 bundle install
 
+curl -X POST -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" \
+    -d "{\"status\": \"5. keychain, certificates, profiles\", \"build_id\": \"$BUILD_ID\"}" ${POST_UPDATE_URL}
+
 echo "************ CREATE KEYCHAIN ************"
 fastlane run create_keychain default_keychain:true timeout:3600 unlock:true add_to_search_list:true name:$KEYCHAIN_NAME password:$KEYCHAIN_PASS
 
@@ -30,6 +35,23 @@ fastlane run update_project_team path:"MobileTEST.xcodeproj" teamid:$TEAM_ID
 echo "************ RUNNING FASTLANE BETA ************"
 echo "******DATE******"
 DATE=$(date +%s)
+
+curl -X POST -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" \
+    -d "{\"status\": \"6. running build\", \"build_id\": \"$BUILD_ID\"}" ${POST_UPDATE_URL}
+
 fastlane run increment_version_number version_number:$DATE
 fastlane beta
+
+curl -X POST -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" \
+    -d "{\"status\": \"7. adding user\", \"build_id\": \"$BUILD_ID\"}" ${POST_UPDATE_URL}
+
 fastlane pilot add $APP_OWNER -a $BUNDLE_IDENTIFIER --username $EMAIL --groups "External Testers"
+
+curl -X POST -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" \
+    -d "{\"status\": \"8. done\", \"build_id\": \"$BUILD_ID\"}" ${POST_UPDATE_URL}
