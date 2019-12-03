@@ -16,8 +16,8 @@ fastlane match appstore -u $EMAIL --verbose --team-id $TEAM_ID --app_identifier 
 
 echo "************ RUNNING FASTLANE PRODUCE ************"
 fastlane produce create --app_name "$APP_NAME" --username $EMAIL --app_identifier "$BUNDLE_IDENTIFIER"
-#echo "************ RUNNING FASTLANE CERT ************"
-#fastlane cert -u $EMAIL --keychain_path $KEYCHAIN_PATH --keychain_password $KEYCHAIN_PASS
+echo "************ RUNNING FASTLANE CERT ************"
+fastlane cert -u $EMAIL --keychain_path $KEYCHAIN_PATH --keychain_password $KEYCHAIN_PASS
 echo "************ RUNNING FASTLANE SIGH ************"
 fastlane sigh --app_identifier "$BUNDLE_IDENTIFIER" -u $EMAIL --provisioning_name "$BUNDLE_IDENTIFIER profile"
 
