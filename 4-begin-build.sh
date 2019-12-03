@@ -28,5 +28,8 @@ fastlane run update_project_provisioning xcodeproj:"MobileTEST.xcodeproj" profil
 echo "****** TRY ADD TEAM*****"
 fastlane run update_project_team path:"MobileTEST.xcodeproj" teamid:$TEAM_ID
 echo "************ RUNNING FASTLANE BETA ************"
+echo "******DATE******"
+DATE=$(date +%s)
+fastlane run increment_version_number version_number:$DATE
 fastlane beta
 fastlane pilot add $APP_OWNER -a $BUNDLE_IDENTIFIER --username $EMAIL --groups "External Testers"
