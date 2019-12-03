@@ -46,5 +46,5 @@ echo "App Icon image | ${APP_ICON_IMAGE}"
 echo "App Owner | ${APP_OWNER}"
 ./2-get-codebase.sh
 ./3-make-icons.sh
-# ./4-begin-build.sh
+./4-begin-build.sh
 echo "$SECONDS elapsed."
