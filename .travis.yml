@@ -8,6 +8,7 @@ cache:
   cocoapods: true
   directories:
     - ./ios/Pods
+    - $HOME/Library/Caches/Homebrew
 before_install:
   - gem update fastlane
   - npm install -g yarn --cache-min 999999999
