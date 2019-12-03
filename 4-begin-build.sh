@@ -23,6 +23,8 @@ fastlane sigh --app_identifier "$BUNDLE_IDENTIFIER" -u $EMAIL --provisioning_nam
 
 echo "***** TRY UPDATE PROFILE****"
 fastlane run update_project_provisioning xcodeproj:"MobileTEST.xcodeproj" profile:"./AppStore_$BUNDLE_IDENTIFIER.mobileprovision"
+echo "****** TRY ADD TEAM*****"
+fastlane run update_project_team path:"MobileTEST.xcodeproj" teamid:$TEAM_ID
 echo "************ RUNNING FASTLANE BETA ************"
 fastlane beta
 fastlane pilot add $APP_OWNER -a $BUNDLE_IDENTIFIER --username $EMAIL --groups "External Testers"
