@@ -2,6 +2,9 @@ language: generic
 provider: script
 os: osx
 osx_image: xcode11.2
+cache:
+  yarn: true
+  cocoapods: true
 before_install:
   - gem update fastlane
   - npm install -g yarn --cache-min 999999999
