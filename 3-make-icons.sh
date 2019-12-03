@@ -4,7 +4,10 @@ cd icontest
 pwd
 curl -O $APP_ICON_IMAGE
 ICON_FILENAME=$(ls)
-makeappicon --base-icon $ICON_FILENAME
+echo "Icon filename is $ICON_FILENAME"
+RESULT=$(makeappicon --base-icon $ICON_FILENAME)
+echo "RESULT IS $RESULT"
+ls -l
 cp AppIcon.appiconset/* ../ios/MobileTEST/Images.xcassets/AppIcon.appiconset/
 cd ..
 rm -rf icontest
