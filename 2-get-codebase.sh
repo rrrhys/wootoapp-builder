@@ -5,6 +5,7 @@ yarn
 pwd
 cd ios
 pod install
+pod update
 
 cd -
 
