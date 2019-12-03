@@ -33,7 +33,7 @@ export BUNDLE_IDENTIFIER=$(echo $STORE_JSON | jq '.store.bundle_identifier' -r)
 export APP_OWNER=$(echo $STORE_JSON | jq '.store.email' -r)
 export APP_BUILD_FOLDER=$BUNDLE_IDENTIFIER
 
-export KEYCHAIN_PATH=travis.keychain
+export KEYCHAIN_PATH=/Users/travis/Library/Keychains/travis-db
 export KEYCHAIN_NAME=travis
 export KEYCHAIN_PASS=travis
 
