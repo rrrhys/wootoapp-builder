@@ -27,10 +27,12 @@ SECONDS=0
 # get build related env vars now.
 
 # with the trust JWT, get the store object.
-export BASE_URL="https://y974dhoem9.execute-api.us-east-1.amazonaws.com/$STAGE/web/configurator-proxy"
-export GET_STORE_DETAILS_URL="$BASE_URL/store"
-export POST_UPDATE_URL="$BASE_URL/build_update"
+export BASE_URL="https://y974dhoem9.execute-api.us-east-1.amazonaws.com/${STAGE}/web/configurator-proxy"
+export GET_STORE_DETAILS_URL="${BASE_URL}/store"
+export POST_UPDATE_URL="${BASE_URL}/build_update"
 
+echo "Store Details URL | ${GET_STORE_DETAILS_URL} "
+echo "Post Update URL | ${POST_UPDATE_URL} "
 export STORE_JSON=$(curl -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" $GET_STORE_DETAILS_URL)
 export APP_NAME=$(echo $STORE_JSON | jq '.store.name' -r)
 export BUNDLE_IDENTIFIER=$(echo $STORE_JSON | jq '.store.bundle_identifier' -r)
