@@ -11,6 +11,9 @@ cache:
 before_install:
   - gem update fastlane
   - npm install -g yarn --cache-min 999999999
+  - brew uninstall imagemagick graphicsmagick libpng jpeg
+  - brew cleanup -s
+  - brew install graphicsmagick
   - npm i -g makeappicon --cache-min 999999999
   - brew install jq >/dev/null
 script: bash 1-configure-environment.sh
