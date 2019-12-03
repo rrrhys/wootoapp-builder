@@ -55,7 +55,6 @@ curl -X POST -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" \
     -d "{\"status\": \"started\", \"build_id\": \"$BUILD_ID\"}" ${POST_UPDATE_URL}
-exit
 ./2-get-codebase.sh
 ./3-make-icons.sh
 ./4-begin-build.sh
