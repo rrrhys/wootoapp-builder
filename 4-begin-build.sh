@@ -12,7 +12,7 @@ fastlane run create_keychain default_keychain:true unlock:true add_to_search_lis
 
 echo "KEYCHAIN PATH $KEYCHAIN_PATH $KEYCHAIN_NAME $KEYCHAIN_PASS"
 echo "************ MATCH ************"
-fastlane match appstore -u $EMAIL --team-id $TEAM_ID --app_identifier $BUNDLE_IDENTIFIER --git_url https://rrrhys@github.com/rrrhys/wootoapp-match.git --keychain_name $KEYCHAIN_NAME --keychain_password $KEYCHAIN_PASS
+fastlane match appstore -u $EMAIL --verbose --team-id $TEAM_ID --app_identifier $BUNDLE_IDENTIFIER --git_url https://rrrhys@github.com/rrrhys/wootoapp-match.git --keychain_name $KEYCHAIN_NAME --keychain_password $KEYCHAIN_PASS
 
 echo "************ RUNNING FASTLANE PRODUCE ************"
 fastlane produce create --app_name "$APP_NAME" --username $EMAIL --app_identifier "$BUNDLE_IDENTIFIER"
