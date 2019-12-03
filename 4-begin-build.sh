@@ -8,7 +8,7 @@ EMAIL="signing@wootoapp.com"
 bundle install
 
 echo "************ CREATE KEYCHAIN ************"
-fastlane run create_keychain default_keychain:true unlock:true add_to_search_list:true name:$KEYCHAIN_NAME password:$KEYCHAIN_PASS
+fastlane run create_keychain default_keychain:true timeout:3600 unlock:true add_to_search_list:true name:$KEYCHAIN_NAME password:$KEYCHAIN_PASS
 
 echo "KEYCHAIN PATH $KEYCHAIN_PATH $KEYCHAIN_NAME $KEYCHAIN_PASS"
 echo "************ MATCH ************"
