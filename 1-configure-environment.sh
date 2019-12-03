@@ -27,7 +27,7 @@ SECONDS=0
 # get build related env vars now.
 
 # with the trust JWT, get the store object.
-export STORE_JSON=$(curl -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" "https://y974dhoem9.execute-api.us-east-1.amazonaws.com/prod/web/configurator-proxy/store")
+export STORE_JSON=$(curl -H "Authorization: Bearer $ASSUME_ADMIN_TRUST_JWT" "https://y974dhoem9.execute-api.us-east-1.amazonaws.com/$STAGE/web/configurator-proxy/store")
 export APP_NAME=$(echo $STORE_JSON | jq '.store.name' -r)
 export BUNDLE_IDENTIFIER=$(echo $STORE_JSON | jq '.store.bundle_identifier' -r)
 export APP_OWNER=$(echo $STORE_JSON | jq '.store.email' -r)
