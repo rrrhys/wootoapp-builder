@@ -25,6 +25,8 @@ echo "************ RUNNING FASTLANE CERT ************"
 fastlane cert -u $EMAIL --keychain_path $KEYCHAIN_PATH --keychain_password $KEYCHAIN_PASS --team_id $TEAM_ID
 echo "************ RUNNING FASTLANE SIGH ************"
 fastlane sigh --app_identifier "$BUNDLE_IDENTIFIER" -u $EMAIL --provisioning_name "$BUNDLE_IDENTIFIER profile"
+echo "************ FASTLANE SIGH LIST INSTALLED ************"
+fastlane sigh manage
 
 echo "**** RANDO KEY THING ****"
 security set-key-partition-list -S apple-tool:,apple: -s -k $KEYCHAIN_PASS $KEYCHAIN_PATH
